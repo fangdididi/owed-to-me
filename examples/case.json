@@ -1,0 +1,27 @@
+{
+  "card": {
+    "employer": "Example Tech Co. (fictional)",
+    "jurisdiction": "cn",
+    "status": "left on 2026-10-31 after the company ended the contract citing restructuring",
+    "role": "QA engineer",
+    "start": "2022-03-14",
+    "end": "2026-10-31",
+    "monthly_avg_12m": 12000,
+    "goal": "get the money without a long fight; a clean reference matters"
+  },
+  "evidence": [
+    {"id": "E1", "what": "payslips Jan-Oct 2026", "holder": "me (PDF)", "grade": "HARD"},
+    {"id": "E2", "what": "bank wage transfers", "holder": "my bank app", "grade": "HARD"},
+    {"id": "E3", "what": "attendance system export", "holder": "company HR system", "grade": "HARD", "at_risk": "account closes at exit", "secured": true},
+    {"id": "E4", "what": "manager chat assigning weekend work", "holder": "work chat app", "grade": "FIRM", "at_risk": "work chat account removal", "secured": false},
+    {"id": "E5", "what": "my own notes of holiday shift", "holder": "me", "grade": "THIN"},
+    {"id": "E6", "what": "termination notice citing restructuring", "holder": "me (photo + email)", "grade": "HARD"}
+  ],
+  "lines": [
+    {"id": "M1", "type": "OVERTIME", "amount": 1534.48, "formula": "owed.py hours examples/hours.csv --monthly 12000 (weekday + rest-day rows)", "evidence": ["E3", "E4"], "grade": "FIRM", "event_date": "2026-10-31", "route": "ARBITRATE"},
+    {"id": "M2", "type": "OVERTIME", "amount": 827.59, "formula": "4 h holiday x 68.97/h x 3", "evidence": ["E5"], "event_date": "2026-10-31", "route": "ARBITRATE"},
+    {"id": "M3", "type": "LEAVE", "amount": 3310.34, "formula": "owed.py leave --career-years 6 --taken 1 --days-employed 304", "evidence": ["E1", "E3"], "event_date": "2026-10-31", "route": "ASK"},
+    {"id": "M4", "type": "SEVERANCE", "amount": 60000, "formula": "owed.py severance --start 2022-03-14 --end 2026-10-31 --monthly-avg 12000 --route N", "evidence": ["E1", "E2", "E6"], "event_date": "2026-10-31", "route": "ASK"},
+    {"id": "M5", "type": "NOTICE_MONTH", "amount": 12000, "formula": "one month wage in lieu of 30 days notice (only if no notice was given)", "evidence": ["E6"], "event_date": "2026-10-31", "route": "ASK"}
+  ]
+}
